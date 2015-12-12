@@ -11,7 +11,8 @@ define(function(){
     }
 
     function jumpAttack() {
-        this.y = 90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 63.69));
+        this.y = 90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 9));
+        //this.y = (90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 90)))*0.75+1;
     }
 
     /*Function to slide an element on the x axis   <--- */
