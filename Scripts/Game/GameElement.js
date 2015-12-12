@@ -1,21 +1,30 @@
-define(function(){
-    function GameElement(width, height, src, x,y,ctx, updateFn){
-        this.width = width;
-        this.height = height;
+define(function () {
+    function GameElement(options) {
+
+        var canvas = options.canvas;
+
+        if (!canvas) throw Error("Canvas was not defined for GameElement");
+
+        this.width = options.width;
+        this.height = options.height;
         this.image = new Image();
-        this.image.src = src;
-        this.x = x || 0;
-        this.y = y || 0;
-        this.context = ctx;
-        this.canvas = ctx.canvas;
+        this.image.src = options.imageSource;
+        this.x = options.x || 0;
+        this.y = options.y || 0;
+        this.context = options.canvas.getContext('2d');
 
-        this.updatePosition = updateFn
+        this.draw = function () {
 
-        this.draw = function(){
-            if(-this.width + ctx.canvas.clientWidth >= this.x ){
-                this.x = 0;
+            if (options.updateFn && (typeof options.updateFn == "function")) {
+                options.updateFn.call(this);
             }
-            ctx.drawImage(this.image, this.x, this.y);
+
+            this.context.clearRect(0, 0, canvas.width, canvas.height);
+
+            /*if(-this.width + options.canvas.clientWidth >= this.x ){
+             this.x = 0;
+             }*/
+            this.context.drawImage(this.image, this.x, this.y);
         }
     }
 
