@@ -1,17 +1,15 @@
 define(function (require) {
     var GameElement = require('./GameElement');
     var EnemyManager = require('./EnemyManager');
+    var Util = require('./Util');
 
-    var canvas1 = document.getElementById('gameCanvas_1');
-    var canvas2 = document.getElementById('gameCanvas_2');
-    var canvas3 = document.getElementById('gameCanvas_3');
-    var canvas3_1 = document.getElementById('gameCanvas_3_1');
-    var canvas4 = document.getElementById('gameCanvas_4');
+    var canvas1 = document.getElementById('gameCanvas_1'); //Clouds
+    var canvas2 = document.getElementById('gameCanvas_2'); //Mountains
+    var canvas3 = document.getElementById('gameCanvas_3'); //Ground
+    var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
+    var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
 
-    function updatePosition() {
-        this.x--;
-    }
-
+    var enemyManager = new EnemyManager(canvas4);
     var clouds = new GameElement({
         width: 1800,
         height: 131,
@@ -19,9 +17,8 @@ define(function (require) {
         x: 0,
         y: 0,
         canvas: canvas1,
-        updateFn: updatePosition
+        updateFn: Util.slideBG(1)
     });
-
     var mountains = new GameElement({
         width: 1800,
         height: 131,
@@ -29,7 +26,7 @@ define(function (require) {
         x: 0,
         y: 100,
         canvas: canvas2,
-        updateFn: updatePosition
+        updateFn: Util.slideBG(1)
     });
     var ground = new GameElement({
         width: 1800,
@@ -38,75 +35,50 @@ define(function (require) {
         x: 0,
         y: 350,
         canvas: canvas3,
-        updateFn: updatePosition
+        updateFn: Util.slideBG(1)
     });
-
     var kakachu = new GameElement({
         width: 75,
         height: 75,
         imageSource: 'Images/Kakachu.png',
         x: 0,
         y: 280,
-        canvas: canvas4,
-        updateFn: function () {
-            this.x = this.x;
-        }
+        canvas: canvas5,
+        updateFn: Util.slideBG(0)
     });
 
-    var enemyManager = new EnemyManager(canvas3_1);
+    var jumping = false,
+        counter = 0,
+        DRAW_INTERVAL = 17;
 
-    var jumping = false;
-    var counter = 0, DRAW_INTERVAL = 17;
-
+    /*** Gameloop ***/
     setTimeout(function drawAll() {
-
         if (counter == 5) {
-            //canvasContext4.clearRect(0, 0, canvasContext4.canvas.width, canvasContext4.canvas.height);
-            kakachu.draw();
+            kakachu.draw(true);
         }
-
-        if (counter % 30 == 0) {
-            if(Math.random() < 0.1)
-                enemyManager.addEnemy();
-
-            //canvasContext1.clearRect(0, 0, canvasContext1.canvas.width, canvasContext1.canvas.height);
-            /*canvasContext1.rect(0,0,600,400);
-             canvasContext1.fillStyle="lightblue";
-             canvasContext1.fill();
-             */
-            //clouds.updatePosition();
-            //clouds.x = clouds.x - 1;
-            clouds.draw();
-            counter = 0;
-        }
-
-        if (counter % 10 == 0) {
-            //canvasContext2.clearRect(0, 0, canvasContext2.canvas.width, canvasContext2.canvas.height);
-            //mountains.updatePosition();
-            //mountains.x = mountains.x - 1;
-            mountains.draw();
-        }
-
-        if (counter % 4 == 0) {
-            //canvasContext3.clearRect(0, 0, canvasContext3.canvas.width, canvasContext3.canvas.height);
-            //ground.updatePosition();
-            //ground.x = ground.x - 1;
-            ground.draw();
-        }
-
+            if (counter % 30 == 0) {
+                if(Math.random() < 0.1){
+                    enemyManager.addEnemy();
+                }
+                clouds.draw(true);
+                counter = 0;
+            }
+                if (counter % 10 == 0) {
+                    mountains.draw(true);
+                }
+                    if (counter % 4 == 0) {
+                        ground.draw(true);
+                    }
+                        if (jumping) {
+                            kakachu.draw(true);
+                        }
         enemyManager.drawAll();
-
-        if (jumping) {
-            //canvasContext4.clearRect(0, 0, canvasContext4.canvas.width, canvasContext4.canvas.height);
-            kakachu.draw();
-        }
-
         counter++;
         setTimeout(drawAll, DRAW_INTERVAL);
-
     }, DRAW_INTERVAL);
 
-    canvas4.addEventListener('keydown', function (event) {
+    /*** Handlers ***/
+    canvas5.addEventListener('keydown', function (event) {
         if (event.keyCode === 32 && !jumping) {
             jumping = true;
             var posY = 280, x = 0, interval = (Math.PI / 100), counter = 0;
@@ -117,11 +89,10 @@ define(function (require) {
                 if (x >= 2 * Math.PI) {
                     clearInterval(thisInterval);
                     jumping = false;
-                    //canvasContext4.clearRect(0, 0, canvasContext4.canvas.width, canvasContext4.canvas.height);
-                    kakachu.draw();
+                    kakachu.draw(true);
                 }
-            }, 10)
+            }, 10);
         }
-    })
+    });
 
 });
