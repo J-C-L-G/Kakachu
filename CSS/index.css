@@ -7,8 +7,9 @@
     margin: 7% auto;
     width: 600px;
     height: 400px;
-    display: block
+    display: block;
     position: relative;
+    background-color: lightblue;
 }
 
 .canvasWrapper canvas{
