@@ -1,0 +1,16 @@
+*:focus{
+    outline: 0;
+}
+
+.canvasWrapper{
+    border: 1px solid black;
+    margin: 7% auto;
+    width: 600px;
+    height: 400px;
+    display: block
+    position: relative;
+}
+
+.canvasWrapper canvas{
+    position: absolute;
+}
