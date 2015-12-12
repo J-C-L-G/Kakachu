@@ -1,2 +1,2 @@
 # Kakachu
-Jump and Evade Game.
+Jump and Evade Game
