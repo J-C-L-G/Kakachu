@@ -1,5 +1,8 @@
-define(function () {
+define(function (require) {
         var GameElement = require('./GameElement');
+
+        var util = require('./Util');
+        var tempForEnemy = 0;
 
         /*function Enemy(options) {
          var type = options.type;
@@ -24,26 +27,43 @@ define(function () {
         }
 
         function EnemyManager(canvas) {
-            this.context = canvas.getContext('2d')
+            this.context = canvas.getContext('2d');
 
             this.collection = [];
 
             this.addEnemy = function () {
 
-                this.collection.push(new GameElement({
-                    width: 75,
-                    height: 75,
-                    imageSource: 'Images/Paper.png',
-                    x: 600,
-                    y: 300,
-                    canvas: canvas,
-                    updateFn: tpMovement
-                }))
+                /*This is only for test random to be implemented >__> */
+                if(tempForEnemy % 2 == 0){
+                    this.collection.push(new GameElement({
+                        width: 53,
+                        height: 100,
+                        imageSource: 'Images/Plunger.png',
+                        x: 600,
+                        y: 255,
+                        canvas: canvas,
+                        updateFn: util.jumpAttack
+                    }));
+                }else{
+                    this.collection.push(new GameElement({
+                        width: 75,
+                        height: 42,
+                        imageSource: 'Images/Paper.png',
+                        x: 600,
+                        y: 312,
+                        canvas: canvas,
+                        updateFn: util.slideAttack
+                    }));
+                }
+                tempForEnemy++;
+
+                /********************************************************/
 
                 this.collection[this.collection.length - 1].draw = function(){
-                    tpMovement.call(this);
+                    //tpMovement.call(this);
+                    this.updateFn();
                     this.context.drawImage(this.image, this.x, this.y);
-                }
+                };
 
                 if(this.collection.length > 10)
                 this.collection = [];

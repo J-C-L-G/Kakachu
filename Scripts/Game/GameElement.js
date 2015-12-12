@@ -12,6 +12,7 @@ define(function () {
         this.x = options.x || 0;
         this.y = options.y || 0;
         this.context = options.canvas.getContext('2d');
+        this.updateFn = options.updateFn;
 
         this.draw = function () {
 
@@ -21,9 +22,9 @@ define(function () {
 
             this.context.clearRect(0, 0, canvas.width, canvas.height);
 
-            /*if(-this.width + options.canvas.clientWidth >= this.x ){
+            if(-this.width + options.canvas.clientWidth >= this.x ){
              this.x = 0;
-             }*/
+             }
             this.context.drawImage(this.image, this.x, this.y);
         }
     }
