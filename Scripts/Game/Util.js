@@ -10,24 +10,17 @@ define(function(){
         }
     }
 
-    function jumpAttack(top) {
-
-        var d;
-
+    function jumpAttack(top, slideBy) {
+        var begin;
         return function(){
             if(top) {
-                d = Math.sin((100 - this.x--) / 63.66);
-                this.y = 250 + 165 * (d < 0 ? d : 0);
+                begin = Math.sin((100 - this.x--) / 63.66);
             } else {
-                d = Math.sin((300 - this.x--) / 63.66);
-                this.y = 250 + 165 * (d < 0 ? d : 0);
+                begin = Math.sin((300 - this.x--) / 63.66);
             }
-
-            this.x-=3;
-
+            this.y = 250 + 165 * (begin < 0 ? begin : 0);
+            this.x-=slideBy;
         };
-
-        //this.y = (90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 90)))*0.75+1;
     }
 
     /*Function to slide an element on the x axis   <--- */
