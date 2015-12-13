@@ -17,11 +17,10 @@ define(function (require) {
                         width: 53,
                         height: 100,
                         imageSource: 'Images/Plunger.png',
-                        //x: (tempForEnemy % 4 == 0) ? 500 : 700,
                         x:600,
                         y: 255,
                         canvas: canvas,
-                        updateFn: Util.jumpAttack(r > 0.5)
+                        updateFn: Util.jumpAttack((r > 0.5),3)
                     }));
                 }else{
                     this.activeEnemies.push(new GameElement({
