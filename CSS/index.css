@@ -1,8 +1,17 @@
-*:focus{
+@keyframes animate {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -1200px;
+    }
+}
+
+*:focus {
     outline: 0;
 }
 
-.canvasWrapper{
+.canvasWrapper {
     border: 1px solid black;
     margin: 7% auto;
     width: 600px;
@@ -10,8 +19,53 @@
     display: block;
     position: relative;
     background-color: lightblue;
+    overflow: hidden;
 }
 
-.canvasWrapper canvas{
+.canvasWrapper canvas, .canvasWrapper .background {
     position: absolute;
+}
+
+.animate {
+    -webkit-animation: animate;
+    -o-animation: animate;
+    animation: animate;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+.background {
+    /*
+    Use one background-image. The sprite image.
+   */
+}
+
+.clouds {
+    width: 1800px;
+    height: 150px;
+    background-image: url("../Images/Clouds.png");
+    top: 0;
+    animation-duration: 120s;
+}
+
+.mountains {
+    width: 1800px;
+    height: 250px;
+    background-image: url("../Images/Mountains.png");
+    top: 100px;
+    animation-duration: 90s;
+}
+
+.ground {
+    width: 1800px;
+    height: 50px;
+    background-image: url("../Images/Ground.png");
+    top: 350px;
+    animation-duration: 60s;
 }
