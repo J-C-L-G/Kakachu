@@ -10,8 +10,23 @@ define(function(){
         }
     }
 
-    function jumpAttack() {
-        this.y = 90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 9));
+    function jumpAttack(top) {
+
+        var d;
+
+        return function(){
+            if(top) {
+                d = Math.sin((100 - this.x--) / 63.66);
+                this.y = 250 + 165 * (d < 0 ? d : 0);
+            } else {
+                d = Math.sin((300 - this.x--) / 63.66);
+                this.y = 250 + 165 * (d < 0 ? d : 0);
+            }
+
+            this.x-=3;
+
+        }
+
         //this.y = (90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 90)))*0.75+1;
     }
 

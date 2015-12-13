@@ -10,15 +10,18 @@ define(function (require) {
             this.addEnemy = function () {
                 /*This is only for test random to be implemented >__> */
                 if(tempForEnemy % 2 == 0){
+
+                    var r = Math.random();
+
                     this.activeEnemies.push(new GameElement({
                         width: 53,
                         height: 100,
                         imageSource: 'Images/Plunger.png',
                         //x: (tempForEnemy % 4 == 0) ? 500 : 700,
-                        x:375,
+                        x:600,
                         y: 255,
                         canvas: canvas,
-                        updateFn: Util.jumpAttack
+                        updateFn: Util.jumpAttack(r > 0.5)
                     }));
                 }else{
                     this.activeEnemies.push(new GameElement({
