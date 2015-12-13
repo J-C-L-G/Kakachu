@@ -25,7 +25,7 @@ define(function(){
 
             this.x-=3;
 
-        }
+        };
 
         //this.y = (90 + Math.abs(165 * Math.sin((Math.PI - this.x-- -100) / 90)))*0.75+1;
     }
