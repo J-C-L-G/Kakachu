@@ -2,6 +2,7 @@ define(function (require) {
     var GameElement = require('./GameElement');
     var EnemyManager = require('./EnemyManager');
     var Util = require('./Util');
+    var Sounds = require('./Sounds');
 
     //var canvas1 = document.getElementById('gameCanvas_1'); //Clouds
     //var canvas2 = document.getElementById('gameCanvas_2'); //Mountains
@@ -82,6 +83,7 @@ define(function (require) {
     /*** Handlers ***/
     canvas5.addEventListener('keydown', function (event) {
         if (event.keyCode === 32 && !jumping) {
+            Sounds.jumpSound();
             jumping = true;
             var posY = 280, x = 0, interval = (Math.PI / 100), counter = 0;
             var thisInterval = setInterval(function () {

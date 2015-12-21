@@ -18,7 +18,7 @@ define(function(){
             } else {
                 begin = Math.sin((300 - this.x--) / 63.66);
             }
-            this.y = 250 + 165 * (begin < 0 ? begin : 0);
+            this.y = 270 + 165 * (begin < 0 ? begin : 0);
             this.x-=slideBy;
         };
     }

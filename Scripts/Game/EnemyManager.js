@@ -22,6 +22,19 @@ define(function (require) {
                         canvas: canvas,
                         updateFn: Util.jumpAttack((r > 0.5),3)
                     }));
+
+                    //Test for the chili
+                    if(r < 0.2){
+                        this.activeEnemies.push(new GameElement({
+                            width: 75,
+                            height: 42,
+                            imageSource: 'Images/ChiliMx.png',
+                            x: 600,
+                            y: 285,
+                            canvas: canvas,
+                            updateFn: Util.slideAttack(3)
+                        }));
+                    }
                 }else{
                     this.activeEnemies.push(new GameElement({
                         width: 75,

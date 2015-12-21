@@ -1,10 +1,8 @@
-var boing = new Audio();
+define(function(){
+    var boing = new Audio();
+    boing.src = "Sounds/boing.ogg";
 
-// Change
-boing.src = "Sounds/boing.ogg";
-
-window.onload = function(){
-    document.body.addEventListener("keydown", function(){
-        boing.play();
-    })
-}
+    return {
+        jumpSound : function(){boing.play();}
+    }
+});
