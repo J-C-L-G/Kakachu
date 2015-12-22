@@ -50,6 +50,18 @@ define(function (require) {
         updateFn: Util.slideBG(0)
     });
 
+    var progressBar = new GameElement({
+        width: 300,
+        height: 50,
+        imageSource: '',
+        x: 300,
+        y: 100,
+        canvas: canvas5,
+        updateFn: function(){
+
+        }
+    })
+
     var jumping = false,
         counter = 0,
         DRAW_INTERVAL = 17;
@@ -63,6 +75,9 @@ define(function (require) {
             if (Math.random() < 0.1) {
                 enemyManager.addEnemy();
             }
+
+
+
             //clouds.draw(true);
             counter = 0;
         }

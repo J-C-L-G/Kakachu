@@ -7,8 +7,21 @@
     }
 }
 
+@keyframes slideRight {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 150px;
+    }
+}
+
 *:focus {
     outline: 0;
+}
+
+body {
+    background-color: black;
 }
 
 .canvasWrapper {
@@ -68,4 +81,47 @@
     background-image: url("../Images/Ground.png");
     top: 350px;
     animation-duration: 60s;
+}
+
+.progress-bar {
+    background-color: saddlebrown;
+    border: 2px solid green;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+    z-index: 100;
+    right: 0.25em;
+    top: 0.25em;
+    position: absolute;
+}
+
+.progress-bar, .progress-bar img, .progress-bar div {
+    width: 250px;
+    height: 50px;
+    overflow: hidden;
+    /*background-color: black;*/
+}
+
+.progress-bar img, .progress-bar div {
+    width: 250px;
+    height: 50px;
+    position: absolute;
+}
+
+.progress {
+    animation: slideRight;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 60s;
+    -moz-animation-duration: 60s;
+    -o-animation-duration: 60s;
+    animation-duration: 60s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    background-color: white;
+
 }
