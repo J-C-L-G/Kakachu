@@ -12,9 +12,11 @@ define(function (require) {
     var kakachu = new GameElement({
         width: 75,
         height: 75,
-        imageSource: 'Images/Kakachu.png',
+        //imageSource: 'Images/Kakachu.png',
+        imageSource: 'Images/SuperKakachu.png',
         x: 0,
-        y: 280,
+        //y: 280,
+        y:260,
         canvas: canvas5,
         updateFn: Util.slideBG(0)
     });
