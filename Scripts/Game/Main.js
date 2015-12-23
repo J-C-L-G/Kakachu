@@ -4,48 +4,19 @@ define(function (require) {
     var Util = require('./Util');
     var Sounds = require('./Sounds');
 
-    //var canvas1 = document.getElementById('gameCanvas_1'); //Clouds
-    //var canvas2 = document.getElementById('gameCanvas_2'); //Mountains
-    //var canvas3 = document.getElementById('gameCanvas_3'); //Ground
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
 
     var enemyManager = new EnemyManager(canvas4);
 
-    /*var clouds = new GameElement({
-     width: 1800,
-     height: 131,
-     imageSource: 'Images/Clouds.png',
-     x: 0,
-     y: 0,
-     canvas: canvas1,
-     updateFn: Util.slideBG(1)
-     });
-     var mountains = new GameElement({
-     width: 1800,
-     height: 131,
-     imageSource: 'Images/Mountains.png',
-     x: 0,
-     y: 100,
-     canvas: canvas2,
-     updateFn: Util.slideBG(1)
-     });
-     var ground = new GameElement({
-     width: 1800,
-     height: 50,
-     imageSource: 'Images/Ground.png',
-     x: 0,
-     y: 350,
-     canvas: canvas3,
-     updateFn: Util.slideBG(1)
-     });*/
-
     var kakachu = new GameElement({
         width: 75,
         height: 75,
-        imageSource: 'Images/Kakachu.png',
+        //imageSource: 'Images/Kakachu.png',
+        imageSource: 'Images/SuperKakachu.png',
         x: 0,
-        y: 280,
+        //y: 280,
+        y:260,
         canvas: canvas5,
         updateFn: Util.slideBG(0)
     });
@@ -63,16 +34,8 @@ define(function (require) {
             if (Math.random() < 0.1) {
                 enemyManager.addEnemy();
             }
-
-            //clouds.draw(true);
             counter = 0;
         }
-        /*if (counter % 10 == 0) {
-         mountains.draw(true);
-         }
-         if (counter % 4 == 0) {
-         ground.draw(true);
-         }*/
         if (jumping) {
             kakachu.draw(true);
         }
