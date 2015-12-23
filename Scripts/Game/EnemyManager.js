@@ -20,7 +20,8 @@ define(function (require) {
                         x:600,
                         y: 255,
                         canvas: canvas,
-                        updateFn: Util.jumpAttack((r > 0.5),3)
+                        updateFn: Util.jumpAttack((r > 0.5),3),
+                        collidesWith: Util.rectangle
                     }));
 
                     //Test for the chili
@@ -32,7 +33,8 @@ define(function (require) {
                             x: 600,
                             y: 285,
                             canvas: canvas,
-                            updateFn: Util.slideAttack(3)
+                            updateFn: Util.slideAttack(3),
+                            collidesWith: Util.rectangle
                         }));
                     }
                 }else{
@@ -43,7 +45,8 @@ define(function (require) {
                         x: 600,
                         y: 312,
                         canvas: canvas,
-                        updateFn: Util.slideAttack(3)
+                        updateFn: Util.slideAttack(3),
+                        collidesWith: Util.rectangle
                     }));
                 }
                 tempForEnemy++;

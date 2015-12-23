@@ -8,6 +8,7 @@ define(function () {
         this.y = options.y || 0;
         this.canvasContext = options.canvas.getContext('2d');
         this.updateFn = options.updateFn;
+        this.collidesWith = options.collidesWith;
 
         this.draw = function (erase) {
             if(erase){

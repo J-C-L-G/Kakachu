@@ -50,18 +50,6 @@ define(function (require) {
         updateFn: Util.slideBG(0)
     });
 
-    var progressBar = new GameElement({
-        width: 300,
-        height: 50,
-        imageSource: '',
-        x: 300,
-        y: 100,
-        canvas: canvas5,
-        updateFn: function(){
-
-        }
-    })
-
     var jumping = false,
         counter = 0,
         DRAW_INTERVAL = 17;
@@ -76,8 +64,6 @@ define(function (require) {
                 enemyManager.addEnemy();
             }
 
-
-
             //clouds.draw(true);
             counter = 0;
         }
@@ -91,7 +77,20 @@ define(function (require) {
             kakachu.draw(true);
         }
         enemyManager.drawAll();
+
+        var collided = false, points = getVertices(kakachu);
+
+        for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
+            if (enemyManager.activeEnemies[i].collidesWith(points)) {
+                collided = true;
+                break;
+            }
+        }
+
+        if (collided) console.log("You lose");
+
         counter++;
+
         setTimeout(drawAll, DRAW_INTERVAL);
     }, DRAW_INTERVAL);
 
@@ -113,5 +112,14 @@ define(function (require) {
             }, 10);
         }
     });
+
+    function getVertices(hero) {
+
+        return [
+            {x: hero.x + 37.5, y: hero.y + 15},
+            {x: hero.x + 10, y: hero.y + 70},
+            {x: hero.x + 65, y: hero.y + 60}];
+
+    }
 
 });
