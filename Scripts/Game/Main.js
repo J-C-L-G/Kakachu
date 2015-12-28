@@ -12,11 +12,11 @@ define(function (require) {
     var kakachu = new GameElement({
         width: 75,
         height: 75,
-        //imageSource: 'Images/Kakachu.png',
-        imageSource: 'Images/SuperKakachu.png',
+        imageSource: 'Images/Kakachu.png',
+        //imageSource: 'Images/SuperKakachu.png',
         x: 0,
-        //y: 280,
-        y:260,
+        y: 280,
+        //y:260,
         canvas: canvas5,
         updateFn: Util.slideBG(0)
     });
@@ -50,7 +50,7 @@ define(function (require) {
             }
         }
 
-        if (collided) console.log("You lose");
+        if (collided) alert("You lose");
 
         counter++;
 
@@ -79,9 +79,9 @@ define(function (require) {
     function getVertices(hero) {
 
         return [
-            {x: hero.x + 37.5, y: hero.y + 15},
-            {x: hero.x + 10, y: hero.y + 70},
-            {x: hero.x + 65, y: hero.y + 60}];
+            {x: hero.x + 35, y: hero.y + 20},
+            {x: hero.x + 15, y: hero.y + 65},
+            {x: hero.x + 60, y: hero.y + 65}];
 
     }
 

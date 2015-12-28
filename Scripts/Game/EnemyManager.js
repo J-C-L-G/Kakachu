@@ -21,7 +21,7 @@ define(function (require) {
                         y: 255,
                         canvas: canvas,
                         updateFn: Util.jumpAttack((r > 0.5),3),
-                        collidesWith: Util.rectangle
+                        collidesWith: Util.unclogger
                     }));
 
                     //Test for the chili

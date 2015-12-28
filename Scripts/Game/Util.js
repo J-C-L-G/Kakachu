@@ -30,12 +30,27 @@ define(function () {
         }
     }
 
-    function triangle(points) {
+    function unclogger(points) {
 
-        /*for (var i = 0; i < points.length; i++) {
+        var context = this, x, y;
 
+        var vertices = {
+            A: {x: context.x + 43, y: context.y + 3},
+            B: {x: context.x + 1, y: context.y + 76},
+            C: {x: context.x + 29, y: context.y + 84}
+        }
 
-        }*/
+        for (var i = 0; i < points.length; i++) {
+
+            x = points[i].x;
+            y = points[i].y;
+
+            if ((x >= vertices.B.x) && (y <= vertices.B.y) && (x <= vertices.C.x) && (y <= vertices.C.y) && (y >= vertices.A.y))
+                if ((((vertices.B.x - vertices.A.x) * (y - vertices.A.y) - (vertices.B.y - vertices.A.y) * (x - vertices.A.x)) < 0)
+                    && (((vertices.C.x - vertices.A.x) * (y - vertices.A.y) - (vertices.C.y - vertices.A.y) * (x - vertices.A.x)) > 0))
+                    return true;
+
+        }
 
         return false;
 
@@ -60,6 +75,6 @@ define(function () {
         jumpAttack: jumpAttack,
         slideAttack: slideAttack,
         rectangle: rectangle,
-        triangle: triangle
+        unclogger: unclogger
     }
 });
