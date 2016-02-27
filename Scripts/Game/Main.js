@@ -43,7 +43,8 @@ define(function (require) {
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                Util.gameOver();
+                //Util.gameOver();
+                enemyManager.activeEnemies[i].onCollision();
             }
         }
 

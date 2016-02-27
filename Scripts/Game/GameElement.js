@@ -18,6 +18,8 @@ define(function () {
             this.canvasContext.drawImage(this.image, this.x, this.y);
         };
 
+        this.onCollision = options.onCollision;
+
     }
 
     return GameElement;

@@ -21,7 +21,8 @@ define(function (require) {
                         y: 255,
                         canvas: canvas,
                         updateFn: Util.jumpAttack((r > 0.5),3),
-                        collidesWith: Util.unclogger
+                        collidesWith: Util.unclogger,
+                        onCollision:Util.gameOver
                     }));
 
                     //Test for the chili
@@ -34,7 +35,8 @@ define(function (require) {
                             y: 285,
                             canvas: canvas,
                             updateFn: Util.slideAttack(3),
-                            collidesWith: Util.rectangle
+                            collidesWith: Util.rectangle,
+                            onCollision:Util.powerUp
                         }));
                     }
                 }else{
@@ -46,7 +48,8 @@ define(function (require) {
                         y: 312,
                         canvas: canvas,
                         updateFn: Util.slideAttack(3),
-                        collidesWith: Util.rectangle
+                        collidesWith: Util.rectangle,
+                        onCollision:Util.gameOver
                     }));
                 }
                 tempForEnemy++;
@@ -55,7 +58,7 @@ define(function (require) {
             this.drawAll = function (){
                 this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.clientWidth, this.canvasContext.canvas.clientHeight);
                 for (var i = 0; i < this.activeEnemies.length; i++) {
-                    this.activeEnemies[i].draw(false); //true = draw without erase
+                    this.activeEnemies[i].draw(false);
                 }
             };
         }
