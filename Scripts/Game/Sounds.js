@@ -1,12 +1,16 @@
 define(function(){
-    var boing = new Audio();
-    boing.src = "Sounds/boing.ogg";
+    var jump = new Audio();
+    jump.src = "Sounds/jump.ogg";
 
     var mariachi = new Audio();
-    mariachi.src = "Sounds/powerup.ogg";
+    mariachi.src = "Sounds/powerUp.ogg";
+
+    var gameOver = new Audio();
+    gameOver.src = "Sounds/gameOver.ogg";
 
     return {
-        jumpSound : function(){boing.play();},
-        powerupSound : function(){mariachi.play();}
+        jumpSound : function(){jump.play();},
+        powerUpSound : function(){mariachi.play();},
+        gameOver : function(){gameOver.play();}
     }
 });

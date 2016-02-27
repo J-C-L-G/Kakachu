@@ -13,10 +13,8 @@ define(function (require) {
         width: 75,
         height: 75,
         imageSource: 'Images/Kakachu.png',
-        //imageSource: 'Images/SuperKakachu.png',
         x: 0,
-        y: 280,
-        //y:260,
+        y:280,
         canvas: canvas5,
         updateFn: Util.slideBG(0)
     });
@@ -41,16 +39,13 @@ define(function (require) {
         }
         enemyManager.drawAll();
 
-        var collided = false, points = getVertices(kakachu);
+        var points = getVertices(kakachu);
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                collided = true;
-                break;
+                Util.gameOver();
             }
         }
-
-        if (collided) alert("You lose");
 
         counter++;
 

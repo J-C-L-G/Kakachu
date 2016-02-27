@@ -63,7 +63,6 @@ define(function () {
         for (var i = 0; i < points.length; i++) {
 
             if (points[i].x > this.x && (points[i].x < (this.x + this.width)) && (points[i].y > this.y) && (points[i].y < (this.y + this.height))) {
-                Sounds.powerupSound();
                 return true;
             }
 
@@ -73,11 +72,23 @@ define(function () {
 
     }
 
+    function gameOver(){
+        Sounds.gameOver();
+        alert('You lose');
+        window.location.reload();
+    }
+
+    function powerUp(){
+        Sounds.powerUpSound();
+    }
+
     return {
         slideBG: slideBG,
         jumpAttack: jumpAttack,
         slideAttack: slideAttack,
         rectangle: rectangle,
-        unclogger: unclogger
+        unclogger: unclogger,
+        gameOver : gameOver,
+        powerUp:powerUp
     }
 });
