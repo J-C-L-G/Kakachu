@@ -1,5 +1,7 @@
 define(function () {
 
+    var Sounds = require('./Sounds');
+
     /*Function that return a function with a specified speed to scroll the background*/
     function slideBG(slideBy) {
         return function () {
@@ -38,7 +40,7 @@ define(function () {
             A: {x: context.x + 43, y: context.y + 3},
             B: {x: context.x + 1, y: context.y + 76},
             C: {x: context.x + 29, y: context.y + 84}
-        }
+        };
 
         for (var i = 0; i < points.length; i++) {
 
@@ -61,6 +63,7 @@ define(function () {
         for (var i = 0; i < points.length; i++) {
 
             if (points[i].x > this.x && (points[i].x < (this.x + this.width)) && (points[i].y > this.y) && (points[i].y < (this.y + this.height))) {
+                Sounds.powerupSound();
                 return true;
             }
 
