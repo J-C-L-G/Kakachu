@@ -26,7 +26,7 @@ define(function (require) {
                     }));
 
                     //Test for the chili
-                    if(r < 0.2){
+                    if(r < 0.8){
                         this.activeEnemies.push(new GameElement({
                             width: 75,
                             height: 42,

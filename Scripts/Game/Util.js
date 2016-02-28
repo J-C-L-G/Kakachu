@@ -73,14 +73,29 @@ define(function () {
     }
 
     function gameOver(){
-        Sounds.gameOver();
-        alert('You lose');
-        window.location.reload();
+        if(!gameState.invincible){
+            Sounds.gameOver();
+            alert('\n\nGame Over! \n\nFinal Score: ' + gameState.score);
+            window.location.reload();
+        }
+        else{
+            return true; //must change the gameArt to Super Kakachu
+        }
     }
 
     function powerUp(){
         Sounds.powerUpSound();
+        gameState.invincible = true;
+        setTimeout(function(){
+            gameState.invincible = false;
+        },10500);
     }
+
+    var gameState = {
+        invincible : false,
+        changed :  false,
+        score : 0
+    };
 
     return {
         slideBG: slideBG,
@@ -89,6 +104,7 @@ define(function () {
         rectangle: rectangle,
         unclogger: unclogger,
         gameOver : gameOver,
-        powerUp:powerUp
+        powerUp:powerUp,
+        gameState:gameState
     }
 });

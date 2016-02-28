@@ -7,6 +7,8 @@ define(function (require) {
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
 
+    var score = document.getElementById('score');
+
     var enemyManager = new EnemyManager(canvas4);
 
     var kakachu = new GameElement({
@@ -44,11 +46,25 @@ define(function (require) {
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
                 //Util.gameOver();
-                enemyManager.activeEnemies[i].onCollision();
+                if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super Kakachu
+                    kakachu.image.src = 'Images/SuperKakachu.png';
+                    kakachu.y = 260;
+                    setTimeout(function(){
+                        kakachu.image.src = 'Images/Kakachu.png';
+                        kakachu.y = 280;
+                        Util.gameState.changed = false;
+                        },9000);
+
+                    Util.gameState.changed = true;
+                }
+
             }
         }
 
         counter++;
+
+        Util.gameState.score++;
+        score.innerText = Util.gameState.score;
 
         setTimeout(drawAll, DRAW_INTERVAL);
     }, DRAW_INTERVAL);
@@ -58,10 +74,14 @@ define(function (require) {
         if (event.keyCode === 32 && !jumping) {
             Sounds.jumpSound();
             jumping = true;
-            var posY = 280, x = 0, interval = (Math.PI / 100), counter = 0;
+
+            /*Fix for super kakachu while jumping*/
+            var posInY = (Util.gameState.invincible) ? 260 : 280;
+
+            var posY = posInY, x = 0, interval = (Math.PI / 100), counter = 0;
             var thisInterval = setInterval(function () {
                 x = Math.PI + (interval * counter++);
-                posY = 280 + 100 * Math.sin(x);
+                posY = posInY + 100 * Math.sin(x);
                 kakachu.y = posY;
                 if (x >= 2 * Math.PI) {
                     clearInterval(thisInterval);
