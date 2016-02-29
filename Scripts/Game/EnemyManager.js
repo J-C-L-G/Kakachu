@@ -1,6 +1,6 @@
-define(function (require) {
-        var GameElement = require('./GameElement');
-        var Util = require('./Util');
+define(["GameElement", "Util"], function (GameElement, Util) {
+        //var GameElement = require('./GameElement');
+        //var Util = require('./Util');
         var tempForEnemy = 0;
 
         function EnemyManager(canvas) {

@@ -1,6 +1,6 @@
-define(function () {
+define(["Sounds"], function (Sounds) {
 
-    var Sounds = require('./Sounds');
+    //var Sounds = require('./Sounds');
 
     /*Function that return a function with a specified speed to scroll the background*/
     function slideBG(slideBy) {
