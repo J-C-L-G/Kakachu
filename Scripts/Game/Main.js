@@ -1,8 +1,4 @@
 define(["GameElement", "EnemyManager", "Sounds", "Util"],function (GameElement, EnemyManager, Sounds, Util) {
-    //var GameElement = require('./GameElement');
-    //var EnemyManager = require('./EnemyManager');
-    //var Util = require('./Util');
-    //var Sounds = require('./Sounds');
 
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
