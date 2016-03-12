@@ -45,7 +45,7 @@ define(["GameElement", "EnemyManager", "Sounds", "Util"],function (GameElement, 
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                //Util.gameOver();
+                Util.gameOver();
                 if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super Kakachu
                     kakachu.image.src = 'Images/SuperKakachu.png';
                     kakachu.y = 260;
