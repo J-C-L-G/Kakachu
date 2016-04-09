@@ -1,8 +1,4 @@
-define(function (require) {
-    var GameElement = require('./GameElement');
-    var EnemyManager = require('./EnemyManager');
-    var Util = require('./Util');
-    var Sounds = require('./Sounds');
+define(["GameElement", "EnemyManager", "Sounds", "Util"],function (GameElement, EnemyManager, Sounds, Util) {
 
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
@@ -10,9 +6,6 @@ define(function (require) {
     var score = document.getElementById('score');
 
     var enemyManager = new EnemyManager(canvas4);
-
-    var SKakachu = new Image();
-    SKakachu.src = 'Images/SuperKakachu.png';
 
     var kakachu = new GameElement({
         width: 75,
@@ -48,10 +41,10 @@ define(function (require) {
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                //Util.gameOver();
-                kakachu.image.src = SKakachu.src;
-                kakachu.y = 260;
+                Util.gameOver();
                 if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super Kakachu
+                    kakachu.image.src = 'Images/SuperKakachu.png';
+                    kakachu.y = 260;
                     setTimeout(function(){
                         kakachu.image.src = 'Images/Kakachu.png';
                         kakachu.y = 280;

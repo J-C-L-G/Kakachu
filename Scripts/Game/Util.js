@@ -1,6 +1,6 @@
-define(function () {
+define(["Sounds"], function (Sounds) {
 
-    var Sounds = require('./Sounds');
+    //var Sounds = require('./Sounds');
 
     /*Function that return a function with a specified speed to scroll the background*/
     function slideBG(slideBy) {
@@ -27,8 +27,23 @@ define(function () {
 
     /*Function to slide an element on the x axis   <--- */
     function slideAttack(slideBy) {
+        var collidedX = null, collidedY = null;
+
         return function () {
-            this.x = this.x - slideBy;
+            if (this.isDead == true) {
+                collidedX = collidedX || this.x;
+                collidedY = collidedY || this.y;
+                this.x = this.x - slideBy;
+                this.y = collidedY - 150 * Math.sin((collidedX - this.x) / 100);
+
+                if (this.x < (collidedX - 150)) this.isDead = false;
+
+                // this.y = 150*Math.pow(this.x - (collidedX - this.x) /2, 2);
+            } else {
+                collidedX = collidedY = null;
+                this.x = this.x - slideBy;
+            }
+
         }
     }
 
@@ -50,7 +65,14 @@ define(function () {
             if ((x >= vertices.B.x) && (y <= vertices.B.y) && (x <= vertices.C.x) && (y <= vertices.C.y) && (y >= vertices.A.y))
                 if ((((vertices.B.x - vertices.A.x) * (y - vertices.A.y) - (vertices.B.y - vertices.A.y) * (x - vertices.A.x)) < 0)
                     && (((vertices.C.x - vertices.A.x) * (y - vertices.A.y) - (vertices.C.y - vertices.A.y) * (x - vertices.A.x)) > 0))
-                    return true;
+
+                    /*if (gameState.invincible) {
+                        this.isDead = true;
+                    } else {
+                        this.isDead = false;
+                    }*/
+
+            return true;
 
         }
 
@@ -63,6 +85,9 @@ define(function () {
         for (var i = 0; i < points.length; i++) {
 
             if (points[i].x > this.x && (points[i].x < (this.x + this.width)) && (points[i].y > this.y) && (points[i].y < (this.y + this.height))) {
+
+                this.isDead = !!gameState.invincible;
+
                 return true;
             }
 
@@ -72,29 +97,29 @@ define(function () {
 
     }
 
-    function gameOver(){
-        if(!gameState.invincible){
-            Sounds.gameOver();
+    function gameOver() {
+        if (!gameState.invincible) {
+            //Sounds.gameOver();
             alert('\n\nGame Over! \n\nFinal Score: ' + gameState.score);
             window.location.reload();
         }
-        else{
+        else {
             return true; //must change the gameArt to Super Kakachu
         }
     }
 
-    function powerUp(){
+    function powerUp() {
         Sounds.powerUpSound();
         gameState.invincible = true;
-        setTimeout(function(){
+        setTimeout(function () {
             gameState.invincible = false;
-        },10500);
+        }, 10500);
     }
 
     var gameState = {
-        invincible : false,
-        changed :  false,
-        score : 0
+        invincible: false,
+        changed: false,
+        score: 0
     };
 
     return {
@@ -103,8 +128,8 @@ define(function () {
         slideAttack: slideAttack,
         rectangle: rectangle,
         unclogger: unclogger,
-        gameOver : gameOver,
-        powerUp:powerUp,
-        gameState:gameState
+        gameOver: gameOver,
+        powerUp: powerUp,
+        gameState: gameState
     }
 });
