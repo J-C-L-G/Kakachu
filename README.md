@@ -1,5 +1,5 @@
 # Kakachu
-[[https://github.com/J-C-L-G/Kakachu/blob/master/src/assets/image/Kakachu.png|alt=Kakachu]]
+![Kakachu](https://github.com/J-C-L-G/Kakachu/blob/master/src/assets/image/Kakachu.png?raw=true "Kakachu")
 
 Jump and Evade Game.
-(A Google Dinosaur Wannabe) - but dirtier ;)
+(A Wannabe of Google's Dinosaur Game ) - but dirtier ;)
