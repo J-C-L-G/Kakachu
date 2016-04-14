@@ -1,0 +1,22 @@
+{
+  "name": "kakachu",
+  "description": "Jump and Evade Game",
+  "main": "index.js",
+  "authors": [
+    "J-C-L-G jenriquez90"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "game",
+    "javascript"
+  ],
+  "homepage": "https://github.com/J-C-L-G/Kakachu",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
