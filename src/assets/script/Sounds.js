@@ -1,4 +1,3 @@
-define(function(){
     var jump = new Audio();
     jump.src = "Sounds/jump.ogg";
 
@@ -8,9 +7,8 @@ define(function(){
     var gameOver = new Audio();
     gameOver.src = "Sounds/gameOver.ogg";
 
-    return {
+    module.exports = {
         jumpSound : function(){jump.play();},
         powerUpSound : function(){mariachi.play();},
         gameOver : function(){gameOver.play();}
-    }
-});
+    };

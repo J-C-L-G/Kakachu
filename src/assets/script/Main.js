@@ -1,4 +1,7 @@
-define(["GameElement", "EnemyManager", "Sounds", "Util"],function (GameElement, EnemyManager, Sounds, Util) {
+    var GameElement = require('./GameElement');
+    var EnemyManager = require('./EnemyManager');
+    var Sounds = require('./Sounds');
+    var Util = require('./Util');
 
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
@@ -96,5 +99,3 @@ define(["GameElement", "EnemyManager", "Sounds", "Util"],function (GameElement, 
             {x: hero.x + 60, y: hero.y + 65}];
 
     }
-
-});

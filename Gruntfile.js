@@ -46,7 +46,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= folderSrc.root %>',
-                        src: '**',
+                        src: ['**','!**/script/**'],
                         dest: '<%= folderBuild.root %>'
                     },
                 ]

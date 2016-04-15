@@ -1,6 +1,4 @@
-define(["Sounds"], function (Sounds) {
-
-    //var Sounds = require('./Sounds');
+    var Sounds = require('./Sounds');
 
     /*Function that return a function with a specified speed to scroll the background*/
     function slideBG(slideBy) {
@@ -122,7 +120,7 @@ define(["Sounds"], function (Sounds) {
         score: 0
     };
 
-    return {
+    module.exports =  {
         slideBG: slideBG,
         jumpAttack: jumpAttack,
         slideAttack: slideAttack,
@@ -131,5 +129,4 @@ define(["Sounds"], function (Sounds) {
         gameOver: gameOver,
         powerUp: powerUp,
         gameState: gameState
-    }
-});
+    };

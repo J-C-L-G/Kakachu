@@ -1,4 +1,3 @@
-define(function () {
     function GameElement(options) {
         this.width = options.width;
         this.height = options.height;
@@ -22,5 +21,4 @@ define(function () {
 
     }
 
-    return GameElement;
-});
+    module.exports =  GameElement;
