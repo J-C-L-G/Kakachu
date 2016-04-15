@@ -1,11 +1,11 @@
     var jump = new Audio();
-    jump.src = "Sounds/jump.ogg";
+    jump.src = "assets/sound/jump.ogg";
 
     var mariachi = new Audio();
-    mariachi.src = "Sounds/powerUp.ogg";
+    mariachi.src = "assets/sound/powerUp.ogg";
 
     var gameOver = new Audio();
-    gameOver.src = "Sounds/gameOver.ogg";
+    gameOver.src = "assets/sound/gameOver.ogg";
 
     module.exports = {
         jumpSound : function(){jump.play();},

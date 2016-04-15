@@ -15,7 +15,7 @@
                     this.activeEnemies.push(new GameElement({
                         width: 53,
                         height: 100,
-                        imageSource: 'Images/Plunger.png',
+                        imageSource: 'assets/image/Plunger.png',
                         x:600,
                         y: 255,
                         canvas: canvas,
@@ -29,7 +29,7 @@
                         this.activeEnemies.push(new GameElement({
                             width: 75,
                             height: 42,
-                            imageSource: 'Images/ChiliMx.png',
+                            imageSource: 'assets/image/ChiliMx.png',
                             x: 600,
                             y: 285,
                             canvas: canvas,
@@ -42,7 +42,7 @@
                     this.activeEnemies.push(new GameElement({
                         width: 75,
                         height: 42,
-                        imageSource: 'Images/Paper.png',
+                        imageSource: 'assets/image/Paper.png',
                         x: 600,
                         y: 312,
                         canvas: canvas,

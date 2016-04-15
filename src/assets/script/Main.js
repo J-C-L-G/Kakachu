@@ -13,7 +13,7 @@
     var kakachu = new GameElement({
         width: 75,
         height: 75,
-        imageSource: 'Images/Kakachu.png',
+        imageSource: 'assets/image/Kakachu.png',
         x: 0,
         y:280,
         canvas: canvas5,
@@ -46,10 +46,10 @@
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
                 Util.gameOver();
                 if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super Kakachu
-                    kakachu.image.src = 'Images/SuperKakachu.png';
+                    kakachu.image.src = 'assets/image/SuperKakachu.png';
                     kakachu.y = 260;
                     setTimeout(function(){
-                        kakachu.image.src = 'Images/Kakachu.png';
+                        kakachu.image.src = 'assets/image/Kakachu.png';
                         kakachu.y = 280;
                         Util.gameState.changed = false;
                         },9000);
