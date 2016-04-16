@@ -1,5 +1,6 @@
-        var GameElement = require('./GameElement');
-        var Util = require('./Util');
+        var GameElement = require('./GameElement'),
+            Util = require('./Util'),
+            Assets = require('./Assets');
         var tempForEnemy = 0;
 
         function EnemyManager(canvas) {
@@ -15,7 +16,7 @@
                     this.activeEnemies.push(new GameElement({
                         width: 53,
                         height: 100,
-                        imageSource: 'assets/image/Plunger.png',
+                        imageSource: Assets.images.Plunger,
                         x:600,
                         y: 255,
                         canvas: canvas,
