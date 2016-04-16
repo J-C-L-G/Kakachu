@@ -30,7 +30,7 @@
                         this.activeEnemies.push(new GameElement({
                             width: 75,
                             height: 42,
-                            imageSource: 'assets/image/ChiliMx.png',
+                            imageSource: Assets.images.Chili,
                             x: 600,
                             y: 285,
                             canvas: canvas,
@@ -43,7 +43,7 @@
                     this.activeEnemies.push(new GameElement({
                         width: 75,
                         height: 42,
-                        imageSource: 'assets/image/Paper.png',
+                        imageSource: Assets.images.Paper,
                         x: 600,
                         y: 312,
                         canvas: canvas,

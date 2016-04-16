@@ -1,14 +1,7 @@
-    var jump = new Audio();
-    jump.src = "assets/sound/jump.ogg";
-
-    var mariachi = new Audio();
-    mariachi.src = "assets/sound/powerUp.ogg";
-
-    var gameOver = new Audio();
-    gameOver.src = "assets/sound/gameOver.ogg";
+    var Assets = require('./Assets');
 
     module.exports = {
-        jumpSound : function(){jump.play();},
-        powerUpSound : function(){mariachi.play();},
-        gameOver : function(){gameOver.play();}
+        jumpSound : function(){Assets.sounds.jump.play();},
+        powerUpSound : function(){Assets.sounds.powerUp.play();},
+        gameOver : function(){Assets.sounds.gameOver.play();}
     };
