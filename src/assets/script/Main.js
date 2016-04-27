@@ -4,6 +4,8 @@
         Util = require('./Util'),
         Assets = require('./Assets');
 
+    console.log(Assets.images)
+
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
 
@@ -45,11 +47,14 @@
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                Util.gameOver();
                 if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super Kakachu
                     kakachu.image.src = Assets.images.SuperKakachu.src;
                     kakachu.y = 260;
+
+                    console.log(Assets.images)
+
                     setTimeout(function(){
+                        console.log(Assets);
                         kakachu.image.src = Assets.images.Kakachu.src;
                         kakachu.y = 280;
                         Util.gameState.changed = false;
