@@ -38,6 +38,14 @@
             }
             counter = 0;
         }
+
+        if(Util.gameState.invincible) {
+            kakachu.image = Assets.images.SuperKakachu;
+        } else {
+            kakachu.image = Assets.images.Kakachu;
+
+        }
+
         if (jumping) {
             kakachu.draw(true);
         }
@@ -47,15 +55,9 @@
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super Kakachu
-                    kakachu.image.src = Assets.images.SuperKakachu.src;
+                if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super KakachuW
                     kakachu.y = 260;
-
-                    console.log(Assets.images)
-
                     setTimeout(function(){
-                        console.log(Assets);
-                        kakachu.image.src = Assets.images.Kakachu.src;
                         kakachu.y = 280;
                         Util.gameState.changed = false;
                         },9000);

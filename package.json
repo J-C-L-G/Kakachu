@@ -22,6 +22,7 @@
   "homepage": "https://github.com/J-C-L-G/Kakachu#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
     "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",

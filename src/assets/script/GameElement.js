@@ -13,6 +13,7 @@
                 this.canvasContext.clearRect(0, 0, this.canvasContext.canvas.clientWidth, this.canvasContext.canvas.clientHeight);
             }
             this.updateFn();
+
             this.canvasContext.drawImage(this.image, this.x, this.y);
         };
 
