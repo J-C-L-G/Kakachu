@@ -1,0 +1,25 @@
+/*Custom Styles for the home page*/
+.logoHeading{
+    vertical-align: bottom;
+    border: 0;
+    position: relative;
+    padding: 5px;
+    margin: 10px 0 10px 0;
+    box-shadow: 0 0 5px transparent;
+    -webkit-box-shadow: 0 0 5px transparent;
+    -moz-box-shadow: 0 0 5px transparent;
+    -o-box-shadow: 0 0 5px transparent;
+    -ms-box-shadow: 0 0 5px transparent;
+}
+
+.techStack{
+    list-style: none;
+}
+
+.techStack li{
+    display: inline-block;
+}
+
+#project_tagline , .subHeading{
+    color: lightgray;
+}
