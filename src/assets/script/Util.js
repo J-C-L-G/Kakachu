@@ -102,8 +102,8 @@
                 localStorage.setItem('hScore',gameState.score)
             }
             Sounds.gameOver();
-            // alert('\n\nGame Over! \n\nFinal Score: ' + gameState.score);
-            // window.location.reload();
+            alert('\n\nGame Over! \n\nFinal Score: ' + gameState.score);
+            window.location.reload();
         }
         else {
             return true; //must change the gameArt to Super Kakachu

@@ -16,10 +16,10 @@
         kakachu.image = Assets.images.Kakachu;
         Util.gameState.invincible = false;
     });
-    Assets.sounds.gameOver.addEventListener('playing',function(){
-        alert('\n\nGame Over! \n\nFinal Score: ' + Util.gameState.score);
-        window.location.reload();
-    });
+    // Assets.sounds.gameOver.addEventListener('playing',function(){
+    //     alert('\n\nGame Over! \n\nFinal Score: ' + Util.gameState.score);
+    //     window.location.reload();
+    // });
 
 
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
