@@ -10,6 +10,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-html-build');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-browserify');
@@ -34,19 +36,24 @@ module.exports = function (grunt) {
             entry : 'index.html'
         },
 
+        clean: {
+            build: ['<%= folderBuild.root %>'],
+            notUglifiedBundle: ['<%= folderBuild.js %>/bundle.js']
+        },
+
         copy: {
             main: {
                 files: [
                     {
                         expand: false,
-                        src: ['"<%= folderSrc.root %>/<%= folderSrc.entry %>"'],
-                        dest: '"<%= folderBuild.root %>/<%= folderBuild.entry %>"',
+                        src: ['<%= folderSrc.root %>/<%= folderSrc.entry %>'],
+                        dest: '<%= folderBuild.root %>/<%= folderBuild.entry %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: '<%= folderSrc.root %>',
-                        src: ['**','!**/script/**'],
+                        src: ['**','!**/script/**','!**/css/**'],
                         dest: '<%= folderBuild.root %>'
                     },
                 ]
@@ -66,7 +73,7 @@ module.exports = function (grunt) {
                 options: {
                     paths: ['<%= folderSrc.css%>'],
                     plugins: [
-                        new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+                        new (require('less-plugin-autoprefix'))({browsers: ['last 2 versions']}),
                         new (require('less-plugin-clean-css'))(/*cleanCssOptions ||*/ {})
                     ]
                 },
@@ -83,6 +90,13 @@ module.exports = function (grunt) {
             }
         },
 
+        uglify: {
+            build: {
+                src: '<%= folderBuild.js %>/bundle.js',
+                dest: '<%= folderBuild.js %>/bundle.min.js'
+            }
+        },
+
         htmlmin : {
             options : {
                 removeComment : true,
@@ -90,18 +104,18 @@ module.exports = function (grunt) {
                 collapseBooleanAttributes: true,
                 removeAttributeQuotes: true,
                 removeRedundantAttributes: true,
-                removeOptionalTags: true
+                //removeOptionalTags: true
             },
             compress : {
-                src: "<%= folderBuild.root %>/<%= folderBuild.entry %>",
-                dest: "<%= folderBuild.root %>/<%= folderBuild.entry %>"
+                src: '<%= folderBuild.root %>/<%= folderBuild.entry %>',
+                dest: '<%= folderBuild.root %>/<%= folderBuild.entry %>'
             }
         }
 
     });
 
     //Define the default task
-    grunt.registerTask('default',['copy','less','browserify','htmlmin']);
+    grunt.registerTask('default',['clean:build','copy','less','browserify','uglify','clean:notUglifiedBundle','htmlmin']);
 
 
 };

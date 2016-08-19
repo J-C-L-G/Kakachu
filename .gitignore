@@ -1,4 +1,6 @@
 .idea
+.idea/Kakachu.iml
+.idea/workspace.xml
 node_modules
 bower_components
 build
