@@ -26,10 +26,10 @@
                     }));
 
                     //Test for the chili
-                    if(r < 0.8){
+                    if(r < 0.4){
                         this.activeEnemies.push(new GameElement({
                             width: 75,
-                            height: 42,
+                            height: 55,
                             imageSource: Assets.images.Chili,
                             x: 600,
                             y: 285,

@@ -1,0 +1,65 @@
+@keyframes animate {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -1200px;
+  }
+}
+
+*:focus {
+  outline: 0;
+}
+
+.canvasWrapper {
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 600px;
+  height: 400px;
+  display: block;
+  position: relative;
+  background-color: lightblue;
+  overflow: hidden;
+}
+
+.canvasWrapper canvas, .canvasWrapper .background {
+  position: absolute;
+}
+
+.animate {
+  -webkit-animation: animate;
+  -o-animation: animate;
+  animation: animate;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.clouds {
+  width: 1800px;
+  height: 150px;
+  background-image: url("../image/Clouds.png");
+  top: 0;
+  animation-duration: 120s;
+}
+
+.mountains {
+  width: 1800px;
+  height: 250px;
+  background-image: url("../image/Mountains.png");
+  top: 100px;
+  animation-duration: 90s;
+}
+
+.ground {
+  width: 1800px;
+  height: 50px;
+  background-image: url("../image/Ground.png");
+  top: 350px;
+  animation-duration: 60s;
+}

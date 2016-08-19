@@ -4,12 +4,29 @@
         Util = require('./Util'),
         Assets = require('./Assets');
 
-    console.log(Assets.images)
+
+    /*Audio Hooks to update accordingly the image src*/
+    Assets.sounds.powerUp.addEventListener('playing',function(){
+        kakachu.image = Assets.images.SuperKakachu;
+        kakachu.y = 260;
+
+    });
+    Assets.sounds.powerUp.addEventListener('ended',function(){
+        kakachu.y = 280;
+        kakachu.image = Assets.images.Kakachu;
+        Util.gameState.invincible = false;
+    });
+    Assets.sounds.gameOver.addEventListener('playing',function(){
+        alert('\n\nGame Over! \n\nFinal Score: ' + Util.gameState.score);
+        window.location.reload();
+    });
+
 
     var canvas4 = document.getElementById('gameCanvas_4'); //Enemies
     var canvas5 = document.getElementById('gameCanvas_5'); //Kakachu
 
     var score = document.getElementById('score');
+    var hScore = document.getElementById('hScore').textContent = window.localStorage.getItem('hScore') || '0';
 
     var enemyManager = new EnemyManager(canvas4);
 
@@ -39,12 +56,11 @@
             counter = 0;
         }
 
-        if(Util.gameState.invincible) {
-            kakachu.image = Assets.images.SuperKakachu;
-        } else {
-            kakachu.image = Assets.images.Kakachu;
-
-        }
+        // if(Util.gameState.invincible) {
+        //     kakachu.image = Assets.images.SuperKakachu;
+        // } else {
+        //     kakachu.image = Assets.images.Kakachu;
+        // }
 
         if (jumping) {
             kakachu.draw(true);
@@ -55,21 +71,22 @@
 
         for (var i = 0; i < enemyManager.activeEnemies.length; i++) {
             if (enemyManager.activeEnemies[i].collidesWith(points)) {
-                if(enemyManager.activeEnemies[i].onCollision() && !Util.gameState.changed){ //added the if to change the game art Super KakachuW
-                    kakachu.y = 260;
-                    setTimeout(function(){
-                        kakachu.y = 280;
-                        Util.gameState.changed = false;
-                        },9000);
-
-                    Util.gameState.changed = true;
+                if(enemyManager.activeEnemies[i].onCollision() /*&& !Util.gameState.changed*/){ //added the if to change the game art Super Kakachu
+                //     window.requestAnimationFrame(function() {
+                //         kakachu.y = 260;
+                 //        Util.gameState.changed = true;
+                //     });
+                //
+                //             setTimeout(function(){
+                //                 window.requestAnimationFrame(function(){
+                //                     kakachu.y = 280;
+                //                     Util.gameState.changed = false;
+                //                 });
+                //             },8000);
                 }
-
             }
         }
-
         counter++;
-
         Util.gameState.score++;
         score.innerText = Util.gameState.score;
 
@@ -78,6 +95,7 @@
 
     /*** Handlers ***/
     canvas5.addEventListener('keydown', function (event) {
+        event.preventDefault(); //prevent window scrolling in non-full screen mode
         if (event.keyCode === 32 && !jumping) {
             Sounds.jumpSound();
             jumping = true;
